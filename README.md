@@ -1,2 +1,2 @@
-### Este projeto simples
-é um aplicativo em Python para controle de jornada. Ele permite registrar entradas e saídas, calcular horas trabalhadas, extras e banco de horas, considerar intervalos e feriados, e gerar relatórios mensais. A ideia é facilitar a organização da rotina e a criação de folhas de ponto com possibilidade de exportação para formatos como CSV/Excel/PDF.
+### This simple project
+is a Python application for time tracking. It allows you to record entries and exits, calculate hours worked, overtime, and time bank, consider breaks and holidays, and generate monthly reports. The idea is to facilitate routine organization and the creation of timesheets that can be exported to formats such as CSV, Excel, or PDF.
