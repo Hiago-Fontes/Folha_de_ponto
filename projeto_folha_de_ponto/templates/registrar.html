@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Registrar Ponto</h2>
+
+<!-- Seleção via GET para visualizar pontos -->
+<form method="get" action="{{ url_for('registrar') }}">
+	<label>Visualizar pontos do funcionário:
+		<select name="employee_id" onchange="this.form.submit()">
+			<option value="">-- selecione --</option>
+			{% for emp in employees %}
+				<option value="{{ emp.id }}" {% if selected_emp and selected_emp.id==emp.id %}selected{% endif %}>{{ emp.name }}</option>
+			{% endfor %}
+		</select>
+	</label>
+	<noscript><button type="submit">Ver</button></noscript>
+</form>
+
+<hr/>
+
+<!-- Formulário POST para registrar entrada/saída -->
+<form method="post" action="{{ url_for('registrar') }}">
+	<label>Funcionário:
+		<select name="employee_id">
+			<option value="">-- selecione --</option>
+			{% for emp in employees %}
+				<option value="{{ emp.id }}">{{ emp.name }}</option>
+			{% endfor %}
+		</select>
+	</label><br/>
+	<label><input type="radio" name="tipo" value="entrada" checked /> Entrada</label>
+	<label><input type="radio" name="tipo" value="saida" /> Saída</label><br/>
+	<button type="submit">Registrar</button>
+</form>
+
+{% if selected_emp %}
+<hr/>
+<h3>Últimos pontos de {{ selected_emp.name }}</h3>
+{% if selected_entries %}
+<table border="1" cellpadding="4" cellspacing="0">
+	<thead><tr><th>Data/Hora</th><th>Tipo</th></tr></thead>
+	<tbody>
+	{% for e in selected_entries %}
+		<tr>
+			<td>{{ e.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+			<td>{{ e.entry_type }}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% else %}
+	<p>Nenhum registro encontrado para este funcionário.</p>
+{% endif %}
+{% endif %}
+{% endblock %}

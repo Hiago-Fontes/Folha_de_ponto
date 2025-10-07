@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Cadastrar Funcionário</h2>
+<form method="post" action="{{ url_for('funcionarios') }}" class="row g-3 mb-4">
+<div class="col-md-6">
+<input name="nome" class="form-control" placeholder="Nome do funcionário" required>
+</div>
+<div class="col-md-4">
+<select name="setor" class="form-select">
+<option value="diurno">Diurno (07:00–19:00)</option>
+<option value="noturno">Noturno (19:00–07:00)</option>
+</select>
+</div>
+<div class="col-md-2">
+<button class="btn btn-primary">Cadastrar</button>
+</div>
+</form>
+
+<hr/>
+<h3>Lista</h3>
+<ul>
+	{% for emp in employees %}
+		<li>{{ emp.name }} - {{ emp.setor or '—' }}</li>
+	{% else %}
+		<li>Sem funcionários</li>
+	{% endfor %}
+</ul>
+{% endblock %}

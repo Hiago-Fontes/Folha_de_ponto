@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Funcionários</h1>
+<ul>
+	{% for emp in employees %}
+		<li>{{ emp.name }} {% if emp.setor %}({{ emp.setor }}){% endif %}</li>
+	{% else %}
+		<li>Nenhum funcionário cadastrado.</li>
+	{% endfor %}
+</ul>
+{% endblock %}

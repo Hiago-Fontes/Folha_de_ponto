@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Gerar Relatório</h2>
+<form method="post" action="{{ url_for('relatorio') }}">
+	<label>Funcionário:
+		<select name="employee_id">
+			<option value="">-- selecione --</option>
+			{% for emp in employees %}
+				<option value="{{ emp.id }}">{{ emp.name }}</option>
+			{% endfor %}
+		</select>
+	</label><br/>
+	<label>Data início: <input type="date" name="start_date" /></label><br/>
+	<label>Data fim: <input type="date" name="end_date" /></label><br/>
+	<button type="submit">Gerar PDF</button>
+</form>
+{% endblock %}

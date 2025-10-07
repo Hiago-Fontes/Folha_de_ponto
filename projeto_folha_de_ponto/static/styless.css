@@ -1,0 +1,4 @@
+body { padding-top: 1rem; font-family: Inter, Arial, sans-serif; }
+.container { max-width: 900px; }
+.table td, .table th { vertical-align: middle; }
+.flash { margin-top: 0.5rem; }
